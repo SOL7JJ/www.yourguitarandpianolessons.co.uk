@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Correct favicon (your file is JPG, and case matters on GitHub Pages) -->
+    <link rel="icon" href="./IMG_0051.JPG" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
+    <title>Portfolio</title>
+
+    <script defer src="./script.js"></script>
+  </head>
+
+  <body>
+    <header class="header">
+      <nav class="nav">
+        <img
+          src="./IMG_0051.JPG"
+          alt="My logo"
+          class="nav__logo"
+          id="logo"
+          data-version-number="3.0"
+        />
+
+        <ul class="nav__links">
+          <li class="nav__item">
+            <a class="nav__link" href="#section--1">About</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#section--2">Skills</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#section--3">Review</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link nav__link--btn btn--show-modal" href="#"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header__title">
+        <h1>
+          I'm a
+          <span class="highlight">software engineer</span>
+          and<br />
+          <span class="highlight">a musician</span>
+        </h1>
+
+        <h4>This is my personal portfolio</h4>
+        <button class="btn--text btn--scroll-to">Learn more &DownArrow;</button>
+
+        <img src="./grow.jpg" class="header__img" alt="Header image" />
+      </div>
+    </header>
+
+    <!-- SECTION 1 -->
+    <section class="section" id="section--1">
+      <div class="section__title">
+        <h2 class="section__description">Home</h2>
+        <h3 class="section__header">Everything you need to know.</h3>
+      </div>
+
+      <!-- IMPORTANT: class must be "features" (not "Features") -->
+      <div class="features">
+        <img
+          src="./grow-lazy.jpg"
+          data-src="./grow.jpg"
+          alt="Growth"
+          class="features__img lazy-img"
+        />
+
+        <div class="features__feature">
+          <div class="features__icon"><span>🤖</span></div>
+          <h5 class="features__header">Artificial Intelligence</h5>
+          <p>
+            Artificial Intelligence (AI) is the simulation of human intelligence
+            in machines, enabling them to learn, reason, and solve problems. It
+            powers technologies like chatbots, self-driving cars, and
+            recommendation systems.
+          </p>
+        </div>
+
+        <div class="features__feature">
+          <div class="features__icon"><span>💻</span></div>
+          <h5 class="features__header">Software Engineering</h5>
+          <p>
+            A software engineer designs, develops, tests, and maintains software
+            applications. This includes writing clean code, debugging, system
+            design, and collaborating with teams to deliver reliable solutions.
+          </p>
+        </div>
+
+        <img
+          src="./digital-lazy.jpg"
+          data-src="./digital-lazy.jpg"
+          alt="Digital"
+          class="features__img lazy-img"
+        />
+
+        <img
+          src="./grow-lazy.jpg"
+          data-src="./grow.jpg"
+          alt="Web"
+          class="features__img lazy-img"
+        />
+
+        <div class="features__feature">
+          <div class="features__icon"><span>🌐</span></div>
+          <h5 class="features__header">Web Development</h5>
+          <p>
+            Web development includes front-end (HTML/CSS/JS) and back-end
+            (servers, databases, APIs). I build responsive, user-friendly
+            websites and continuously improve performance and user experience.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="section" id="section--2">
+      <div class="section__title">
+        <h2 class="section__description">About me</h2>
+        <h3 class="section__header">
+          Polymath, Multidisciplinary Professional, Creative Technologist,
+          Edu-Tech Artist
+        </h3>
+      </div>
+
+      <div class="operations">
+        <div class="operations__tab-container">
+          <button
+            class="btn operations__tab operations__tab--1 operations__tab--active"
+            data-tab="1"
+          >
+            <span>01</span>Software engineer
+          </button>
+
+          <button class="btn operations__tab operations__tab--2" data-tab="2">
+            <span>02</span>Musician
+          </button>
+
+          <button class="btn operations__tab operations__tab--3" data-tab="3">
+            <span>03</span>Teacher
+          </button>
+        </div>
+
+        <div
+          class="operations__content operations__content--1 operations__content--active"
+        >
+          <div class="operations__icon operations__icon--1"><span>⚙️</span></div>
+          <h5 class="operations__header">Technology</h5>
+          <p>
+            I design and build software solutions, focusing on clean code,
+            scalability, and reliable user experiences across modern platforms.
+          </p>
+        </div>
+
+        <div class="operations__content operations__content--2">
+          <div class="operations__icon operations__icon--2"><span>🎹</span></div>
+          <h5 class="operations__header">Music</h5>
+          <p>
+            I play piano and guitar and enjoy creating, performing, and
+            exploring different styles of music.
+          </p>
+        </div>
+
+        <div class="operations__content operations__content--3">
+          <div class="operations__icon operations__icon--3"><span>📚</span></div>
+          <h5 class="operations__header">Qualified Teacher</h5>
+          <p>
+            I’m a qualified teacher (PGCE + QTS) with strong pedagogy, classroom
+            management, and a passion for helping learners thrive.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section class="section" id="section--3">
+      <div class="section__title section__title--testimonials">
+        <h2 class="section__description">Want to know more</h2>
+        <h3 class="section__header">
+          I can develop and design something like this for you
+        </h3>
+      </div>
+
+      <div class="slider">
+        <div class="slide">
+          <div class="testimonial">
+            <h5 class="testimonial__header">Clean and modern</h5>
+            <blockquote class="testimonial__text">
+              This website has a sleek design, intuitive navigation, and a smooth
+              experience across devices.
+            </blockquote>
+            <address class="testimonial__author">
+              <img
+                src="./IMG_0051.JPG"
+                alt="Author"
+                class="testimonial__photo"
+              />
+              <h6 class="testimonial__name">Client One</h6>
+              <p class="testimonial__location">London, UK</p>
+            </address>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="testimonial">
+            <h5 class="testimonial__header">Professional and friendly</h5>
+            <blockquote class="testimonial__text">
+              Clear communication, strong skills, and a great attitude. Highly
+              recommended.
+            </blockquote>
+            <address class="testimonial__author">
+              <img
+                src="./IMG_0051.JPG"
+                alt="Author"
+                class="testimonial__photo"
+              />
+              <h6 class="testimonial__name">Client Two</h6>
+              <p class="testimonial__location">Manchester, UK</p>
+            </address>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="testimonial">
+            <h5 class="testimonial__header">Give it a try</h5>
+            <blockquote class="testimonial__text">
+              The best way to grow is to start. Small steps lead to big wins.
+            </blockquote>
+            <address class="testimonial__author">
+              <img
+                src="./IMG_0051.JPG"
+                alt="Author"
+                class="testimonial__photo"
+              />
+              <h6 class="testimonial__name">James Jonathan</h6>
+              <p class="testimonial__location">London, UK</p>
+            </address>
+          </div>
+        </div>
+
+        <button class="slider__btn slider__btn--left">&larr;</button>
+        <button class="slider__btn slider__btn--right">&rarr;</button>
+        <div class="dots"></div>
+      </div>
+    </section>
+
+    <section class="section section--sign-up">
+      <div class="section__title">
+        <h3 class="section__header">
+          The best day to get a website was one year ago. The second best is
+          today!
+        </h3>
+      </div>
+      <button class="btn btn--show-modal">Get in touch today!</button>
+    </section>
+
+    <footer class="footer">
+      <ul class="footer__nav">
+        <li class="footer__item"><a class="footer__link" href="#section--1">About</a></li>
+        <li class="footer__item"><a class="footer__link" href="#section--2">Skills</a></li>
+        <li class="footer__item"><a class="footer__link" href="#section--3">Review</a></li>
+        <li class="footer__item">
+          <a class="footer__link btn--show-modal" href="#">Contact</a>
+        </li>
+      </ul>
+
+      <p class="footer__copyright">
+        &copy; <span id="year"></span> —
+        <a class="footer__link" target="_blank" href="https://soljjmusic.com"
+          >James Jonathan</a
+        >.
+      </p>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal hidden">
+      <button class="btn--close-modal">&times;</button>
+      <h2 class="modal__header">
+        Get in touch <br />
+        in just <span class="highlight">10 seconds</span>
+      </h2>
+
+      <form class="modal__form">
+        <label>First Name</label>
+        <input type="text" required />
+        <label>Last Name</label>
+        <input type="text" required />
+        <label>Email Address</label>
+        <input type="email" required />
+        <button class="btn" type="submit">Next step &rarr;</button>
+      </form>
+    </div>
+
+    <div class="overlay hidden"></div>
+  </body>
+</html>
