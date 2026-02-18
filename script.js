@@ -226,16 +226,17 @@ const slider = function () {
 };
 
 slider();
+
 ///////////////////////////////////////
-// Booking form -> send email via Formspree (static-site friendly)
+// Booking form -> Formspree + GA4 conversion event
 const bookingForm = document.querySelector('#bookingForm');
 
 if (bookingForm) {
   bookingForm.addEventListener('submit', async function (e) {
     e.preventDefault();
 
-    // 🔥 Paste your Formspree endpoint here:
-    const FORMSPREE_URL = 'https://formspree.io/projects/2514740145769414549';
+    // ✅ Replace this with your REAL Formspree form endpoint (must look like /f/xxxxxxx)
+    const FORMSPREE_URL = 'https://formspree.io/f/PASTE_FORM_ID_HERE';
 
     const formData = new FormData(bookingForm);
 
@@ -247,8 +248,16 @@ if (bookingForm) {
       });
 
       if (res.ok) {
+        // ✅ Track lead for GA4 / Google Ads
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'generate_lead', {
+            event_category: 'engagement',
+            event_label: 'booking_form',
+          });
+        }
+
         bookingForm.reset();
-        closeModal(); // uses your existing function
+        closeModal();
         alert('Thanks! Your booking request has been sent. I’ll reply shortly.');
       } else {
         alert('Sorry, something went wrong. Please try again.');
