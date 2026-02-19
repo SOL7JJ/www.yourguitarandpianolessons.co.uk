@@ -1,9 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- ============================================================
+       DOCUMENT OVERVIEW
+       This is a single-page landing site for guitar & piano lessons.
+       Navigation links scroll to page sections using anchor IDs.
+       Interactions (modal, slider, tabs, lazy loading, scroll) are
+       controlled by ./script.js
+  ============================================================ -->
   <head>
+    <!-- =========================
+         BASIC META CONFIG
+         - charset: ensures correct character encoding
+         - viewport: makes layout responsive on mobile devices
+    ========================== -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- =========================
+         SEO META TAGS
+         These help search engines understand your website content.
+         - description: shown in Google search snippets
+         - keywords: less important today, but still ok to include
+         - author: credit / ownership
+    ========================== -->
     <meta
       name="description"
       content="Professional guitar and piano lessons in London and online. Learn with a qualified teacher — beginners to intermediate welcome."
@@ -14,31 +33,91 @@
     />
     <meta name="author" content="James Jonathan" />
 
+    <!-- =========================
+         FAVICON
+         Icon that appears in the browser tab
+    ========================== -->
     <link rel="icon" href="IMG_0051.JPG" />
+
+    <!-- =========================
+         GOOGLE FONT
+         Loads Poppins font family from Google Fonts
+    ========================== -->
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap"
       rel="stylesheet"
     />
 
+    <!-- =========================
+         MAIN CSS
+         All layout + styling lives in style.css
+    ========================== -->
     <link rel="stylesheet" href="./style.css" />
+
+    <!-- Page title shown in browser tab + search results -->
     <title>Guitar & Piano Lessons | London & Online</title>
 
-   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2W7JG4CHHZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- ============================================================
+         GOOGLE ANALYTICS (GA4)
+         - Loads Google tag script (gtag.js) asynchronously
+         - Sends page_view + other default events to your GA property
+         - Measurement ID identifies your Analytics data stream
+         Notes:
+         - This should be in <head> so it loads early
+         - async prevents blocking page rendering
+    ============================================================ -->
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-2W7JG4CHHZ"
+    ></script>
+    <script>
+      // dataLayer is a queue that stores analytics events before the GA script fully loads
+      window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-2W7JG4CHHZ');
-</script>
+      // gtag() pushes events into the dataLayer queue
+      function gtag() {
+        dataLayer.push(arguments);
+      }
 
+      // Initializes the Google tag and sets the load timestamp
+      gtag("js", new Date());
+
+      // Connects this page to your GA4 property (Measurement ID)
+      gtag("config", "G-2W7JG4CHHZ");
+    </script>
+
+    <!-- ============================================================
+         MAIN JAVASCRIPT
+         - defer ensures HTML loads first before script runs
+         - script.js likely controls:
+           - modal open/close
+           - smooth scrolling
+           - section reveal / animations
+           - slider functionality
+           - tab switching
+           - lazy image loading
+           - dynamic year in footer
+           - analytics event tracking (if you added it)
+    ============================================================ -->
     <script defer src="./script.js"></script>
   </head>
 
   <body>
+    <!-- ============================================================
+         HEADER / HERO
+         Contains navigation + main headline + hero call-to-action
+    ============================================================ -->
     <header class="header">
+      <!-- =========================
+           NAVIGATION BAR
+           Logo + links that scroll to sections
+      ========================== -->
       <nav class="nav">
+        <!-- Logo image
+             - id="logo" can be used by JS to attach events
+             - data-version-number is custom metadata (optional)
+        -->
         <img
           src="./IMG_0051.JPG"
           alt="Your Guitar and Piano Lessons logo"
@@ -47,6 +126,10 @@
           data-version-number="3.0"
         />
 
+        <!-- Navigation links
+             - href="#section--X" scrolls to that section id
+             - Book uses JS (btn--show-modal) to open modal instead
+        -->
         <ul class="nav__links">
           <li class="nav__item">
             <a class="nav__link" href="#section--1">Lessons</a>
@@ -58,11 +141,18 @@
             <a class="nav__link" href="#section--3">Reviews</a>
           </li>
           <li class="nav__item">
-            <a class="nav__link nav__link--btn btn--show-modal" href="#">Book</a>
+            <!-- btn--show-modal is used by script.js to open the booking modal -->
+            <a class="nav__link nav__link--btn btn--show-modal" href="#"
+              >Book</a
+            >
           </li>
         </ul>
       </nav>
 
+      <!-- =========================
+           HERO CONTENT
+           Headline + supporting text + scroll CTA + hero image
+      ========================== -->
       <div class="header__title">
         <h1>
           Learn <span class="highlight">Guitar</span> and
@@ -70,13 +160,14 @@
           with confidence
         </h1>
 
-        <h4>
-          In-person (London) and online lessons — beginners to intermediate.
-        </h4>
+        <h4>In-person (London) and online lessons — beginners to intermediate.</h4>
+
+        <!-- Button that scrolls down to next section (handled in script.js) -->
         <button class="btn--text btn--scroll-to">
           See how it works &DownArrow;
         </button>
 
+        <!-- Hero image -->
         <img
           src="./grow.jpg"
           class="header__img"
@@ -85,8 +176,13 @@
       </div>
     </header>
 
+    <!-- ============================================================
+         SECTION 1: LESSONS
+         Explains offerings (Guitar, Piano, Theory) + supporting images
+    ============================================================ -->
     <!-- SECTION 1: LESSONS -->
     <section class="section" id="section--1">
+      <!-- Section heading -->
       <div class="section__title">
         <h2 class="section__description">Lessons</h2>
         <h3 class="section__header">
@@ -94,6 +190,13 @@
         </h3>
       </div>
 
+      <!-- Features layout
+           Images use lazy loading pattern:
+           - src has a small/low-quality placeholder
+           - data-src has the real image
+           - JS swaps data-src into src when image is near viewport
+           - lazy-img class can apply blur until loaded
+      -->
       <div class="features">
         <img
           src="./grow-lazy.jpg"
@@ -102,6 +205,7 @@
           class="features__img lazy-img"
         />
 
+        <!-- Guitar feature -->
         <div class="features__feature">
           <div class="features__icon"><span>🎸</span></div>
           <h5 class="features__header">Guitar Lessons</h5>
@@ -112,6 +216,7 @@
           </p>
         </div>
 
+        <!-- Piano feature -->
         <div class="features__feature">
           <div class="features__icon"><span>🎹</span></div>
           <h5 class="features__header">Piano Lessons</h5>
@@ -122,6 +227,7 @@
           </p>
         </div>
 
+        <!-- Lazy image for online lessons -->
         <img
           src="./digital-lazy.jpg"
           data-src="./digital-lazy.jpg"
@@ -129,6 +235,7 @@
           class="features__img lazy-img"
         />
 
+        <!-- Another lazy image for progress -->
         <img
           src="./grow-lazy.jpg"
           data-src="./grow.jpg"
@@ -136,6 +243,7 @@
           class="features__img lazy-img"
         />
 
+        <!-- Music theory feature -->
         <div class="features__feature">
           <div class="features__icon"><span>🧠</span></div>
           <h5 class="features__header">Music Theory (Made Simple)</h5>
@@ -148,6 +256,13 @@
       </div>
     </section>
 
+    <!-- ============================================================
+         SECTION 2: ABOUT
+         Tabbed component explaining teaching style, learning content, and audience.
+         JS uses:
+         - data-tab attribute to know which tab was clicked
+         - operations__content--X classes to show/hide content
+    ============================================================ -->
     <!-- SECTION 2: ABOUT -->
     <section class="section" id="section--2">
       <div class="section__title">
@@ -158,6 +273,7 @@
       </div>
 
       <div class="operations">
+        <!-- Tabs (buttons) -->
         <div class="operations__tab-container">
           <button
             class="btn operations__tab operations__tab--1 operations__tab--active"
@@ -175,6 +291,7 @@
           </button>
         </div>
 
+        <!-- Tab content 1 -->
         <div
           class="operations__content operations__content--1 operations__content--active"
         >
@@ -187,6 +304,7 @@
           </p>
         </div>
 
+        <!-- Tab content 2 -->
         <div class="operations__content operations__content--2">
           <div class="operations__icon operations__icon--2"><span>🎶</span></div>
           <h5 class="operations__header">Songs, technique, and confidence</h5>
@@ -197,6 +315,7 @@
           </p>
         </div>
 
+        <!-- Tab content 3 -->
         <div class="operations__content operations__content--3">
           <div class="operations__icon operations__icon--3"><span>👤</span></div>
           <h5 class="operations__header">Beginners to intermediate</h5>
@@ -209,6 +328,14 @@
       </div>
     </section>
 
+    <!-- ============================================================
+         SECTION 3: REVIEWS
+         Slider / carousel for testimonials.
+         JS likely:
+         - moves .slide elements left/right
+         - attaches click handlers to arrow buttons
+         - generates .dots navigation indicators
+    ============================================================ -->
     <!-- SECTION 3: REVIEWS -->
     <section class="section" id="section--3">
       <div class="section__title section__title--testimonials">
@@ -217,6 +344,7 @@
       </div>
 
       <div class="slider">
+        <!-- Slide 1 -->
         <div class="slide">
           <div class="testimonial">
             <h5 class="testimonial__header">Clear and encouraging</h5>
@@ -225,13 +353,18 @@
               improved faster than I expected.
             </blockquote>
             <address class="testimonial__author">
-              <img src="./IMG_0051.JPG" alt="Student" class="testimonial__photo" />
+              <img
+                src="./IMG_0051.JPG"
+                alt="Student"
+                class="testimonial__photo"
+              />
               <h6 class="testimonial__name">Student (Beginner Guitar)</h6>
               <p class="testimonial__location">London, UK</p>
             </address>
           </div>
         </div>
 
+        <!-- Slide 2 -->
         <div class="slide">
           <div class="testimonial">
             <h5 class="testimonial__header">Progress every week</h5>
@@ -240,13 +373,18 @@
               now, not random.
             </blockquote>
             <address class="testimonial__author">
-              <img src="./IMG_0051.JPG" alt="Student" class="testimonial__photo" />
+              <img
+                src="./IMG_0051.JPG"
+                alt="Student"
+                class="testimonial__photo"
+              />
               <h6 class="testimonial__name">Student (Piano)</h6>
               <p class="testimonial__location">Online</p>
             </address>
           </div>
         </div>
 
+        <!-- Slide 3 -->
         <div class="slide">
           <div class="testimonial">
             <h5 class="testimonial__header">Friendly and professional</h5>
@@ -255,19 +393,30 @@
               I want to achieve.
             </blockquote>
             <address class="testimonial__author">
-              <img src="./IMG_0051.JPG" alt="Student" class="testimonial__photo" />
+              <img
+                src="./IMG_0051.JPG"
+                alt="Student"
+                class="testimonial__photo"
+              />
               <h6 class="testimonial__name">Student (Intermediate)</h6>
               <p class="testimonial__location">London, UK</p>
             </address>
           </div>
         </div>
 
+        <!-- Slider controls -->
         <button class="slider__btn slider__btn--left">&larr;</button>
         <button class="slider__btn slider__btn--right">&rarr;</button>
+
+        <!-- Dots (usually inserted/updated by JavaScript) -->
         <div class="dots"></div>
       </div>
     </section>
 
+    <!-- ============================================================
+         SIGN-UP / CALL TO ACTION
+         Button opens the booking modal (same class used in nav)
+    ============================================================ -->
     <section class="section section--sign-up">
       <div class="section__title">
         <h3 class="section__header">
@@ -277,12 +426,25 @@
       <button class="btn btn--show-modal">Book a lesson</button>
     </section>
 
+    <!-- ============================================================
+         FOOTER
+         Contains quick navigation + copyright
+         The <span id="year"></span> is typically filled by JavaScript
+    ============================================================ -->
     <footer class="footer">
       <ul class="footer__nav">
-        <li class="footer__item"><a class="footer__link" href="#section--1">Lessons</a></li>
-        <li class="footer__item"><a class="footer__link" href="#section--2">About</a></li>
-        <li class="footer__item"><a class="footer__link" href="#section--3">Reviews</a></li>
-        <li class="footer__item"><a class="footer__link btn--show-modal" href="#">Book</a></li>
+        <li class="footer__item">
+          <a class="footer__link" href="#section--1">Lessons</a>
+        </li>
+        <li class="footer__item">
+          <a class="footer__link" href="#section--2">About</a>
+        </li>
+        <li class="footer__item">
+          <a class="footer__link" href="#section--3">Reviews</a>
+        </li>
+        <li class="footer__item">
+          <a class="footer__link btn--show-modal" href="#">Book</a>
+        </li>
       </ul>
 
       <p class="footer__copyright">
@@ -291,39 +453,55 @@
       </p>
     </footer>
 
+    <!-- ============================================================
+         MODAL (POPUP BOOKING FORM)
+         - hidden class hides it by default
+         - script.js toggles .hidden on modal + overlay
+         - close button + overlay click normally close the modal
+    ============================================================ -->
     <!-- MODAL -->
     <div class="modal hidden">
+      <!-- Close modal button (script.js likely listens for click) -->
       <button class="btn--close-modal">&times;</button>
+
       <h2 class="modal__header">
         Book a lesson <br />
         in just <span class="highlight">10 seconds</span>
       </h2>
 
+      <!-- ============================================================
+           BOOKING FORM (Formspree)
+           - action points to Formspree endpoint
+           - method POST sends form fields to Formspree
+           - _subject sets the email subject line
+           - _gotcha is a honeypot field (spam protection):
+             bots often fill it in; humans won't see it
+      ============================================================ -->
       <!-- ✅ THIS IS NOW THE ONLY BOOKING FORM -->
       <form
-  class="modal__form"
-  id="bookingForm"
-  action="https://formspree.io/f/mldjgppg"
-  method="POST"
->
-  <label>First Name</label>
-  <input type="text" name="firstName" required />
+        class="modal__form"
+        id="bookingForm"
+        action="https://formspree.io/f/mldjgppg"
+        method="POST"
+      >
+        <label>First Name</label>
+        <input type="text" name="firstName" required />
 
-  <label>Last Name</label>
-  <input type="text" name="lastName" required />
+        <label>Last Name</label>
+        <input type="text" name="lastName" required />
 
-  <label>Email Address</label>
-  <input type="email" name="email" required />
+        <label>Email Address</label>
+        <input type="email" name="email" required />
 
-  <!-- optional extras -->
-  <input type="hidden" name="_subject" value="New lesson booking enquiry" />
-  <input type="text" name="_gotcha" style="display:none" />
+        <!-- optional extras -->
+        <input type="hidden" name="_subject" value="New lesson booking enquiry" />
+        <input type="text" name="_gotcha" style="display:none" />
 
-  <button class="btn" type="submit">Next step &rarr;</button>
-</form>
-
+        <button class="btn" type="submit">Next step &rarr;</button>
+      </form>
     </div>
 
+    <!-- Overlay behind modal; usually closes modal when clicked -->
     <div class="overlay hidden"></div>
   </body>
 </html>
