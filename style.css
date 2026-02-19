@@ -877,3 +877,12 @@ img {
     width: 100%;
   }
 }
+.modal__form select,
+.modal__form textarea {
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  width: 100%;
+}

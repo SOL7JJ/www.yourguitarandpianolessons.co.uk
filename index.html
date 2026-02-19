@@ -478,10 +478,10 @@
              bots often fill it in; humans won't see it
       ============================================================ -->
       <!-- ✅ THIS IS NOW THE ONLY BOOKING FORM -->
-      <form
+           <form
         class="modal__form"
         id="bookingForm"
-        action="https://formspree.io/f/mldjgppg"
+        action="https://formspree.io/f/mqedlrnk"
         method="POST"
       >
         <label>First Name</label>
@@ -493,12 +493,42 @@
         <label>Email Address</label>
         <input type="email" name="email" required />
 
+        <!-- ✅ New: Instrument choice -->
+        <label>Instrument</label>
+        <select name="instrument" required>
+          <option value="" disabled selected>Select an instrument</option>
+          <option value="Guitar">Guitar</option>
+          <option value="Piano">Piano</option>
+        </select>
+
+        <!-- ✅ New: Lesson type -->
+        <label>Lesson type</label>
+        <select name="lessonType" required>
+          <option value="" disabled selected>Select lesson type</option>
+          <option value="In-person (London)">In-person (London)</option>
+          <option value="Online">Online</option>
+        </select>
+
+        <!-- ✅ New: Message box (this is what they will "leave") -->
+        <label>Message</label>
+        <textarea
+          name="message"
+          rows="4"
+          placeholder="Tell me your level (beginner/intermediate), what you want to learn, and your availability..."
+          required
+        ></textarea>
+
         <!-- optional extras -->
-        <input type="hidden" name="_subject" value="New lesson booking enquiry" />
-        <input type="text" name="_gotcha" style="display:none" />
+        <input
+          type="hidden"
+          name="_subject"
+          value="New lesson booking enquiry"
+        />
+        <input type="text" name="_gotcha" style="display: none" />
 
         <button class="btn" type="submit">Next step &rarr;</button>
       </form>
+
     </div>
 
     <!-- Overlay behind modal; usually closes modal when clicked -->
