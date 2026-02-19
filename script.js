@@ -368,7 +368,7 @@ if (bookingForm) {
   bookingForm.addEventListener('submit', async function (e) {
     e.preventDefault();
 
-        const FORMSPREE_URL = 'https://formspree.io/f/mldjgppg';
+        const FORMSPREE_URL = 'https://formspree.io/f/mqedlrnk';
 
     // ✅ Replace placeholder with your REAL Formspree endpoint.
     // It should match the one in your HTML form action attribute.
