@@ -521,7 +521,7 @@ function App() {
         <p className="footer__copyright">
           &copy; <span id="year">{currentYear}</span> -{' '}
           <a className="footer__link" target="_blank" rel="noreferrer" href="https://jjai.dev">
-            JJ
+            jjai.dev
           </a>
           .
         </p>
