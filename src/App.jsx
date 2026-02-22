@@ -314,7 +314,7 @@ function App() {
           <h4>In-person (London) and online lessons - beginners to intermediate.</h4>
 
           <button className="btn--text btn--scroll-to" onClick={(event) => scrollToSection(section1Ref, event)}>
-            See how it works &DownArrow;
+            See how it works ↓
           </button>
 
           <img src={HEADER_IMAGE_SRC} className="header__img" alt="Guitar and piano lessons" />
